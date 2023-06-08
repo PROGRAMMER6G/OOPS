@@ -1,0 +1,33 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+class date
+	{
+		int day,month,year;
+		public:
+		date(char *d);
+		date(int m,int d,int y);
+		void show_date();
+	};
+date::date(char *d)
+	{
+		sscanf(d,"%d%*c%d%*c%d",&month,&day,&year);
+	}
+date::date(int m,int d,int y)
+	{
+		day=d;
+		month=m;
+		year=y;
+	}
+void date::show_date()
+	{
+		cout<<month<<"/"<<day;
+		cout<<"/"<<year<<"\n";
+	}
+int main()
+	{
+		date ob1(26,07,2003),ob2("02/02/2004");
+		ob1.show_date();
+		ob2.show_date();
+		return 0;
+	}

@@ -1,0 +1,76 @@
+#include<iostream>
+using namespace std;
+class rs
+	{
+		public:
+		float rs;
+		virtual void conv()=0;
+		void disp()
+			{
+				cout<<"Is Equivalent to"<<rs<<"INR\n";
+			}
+	};
+class dol:public rs
+	{
+		float dol;
+		public:
+		void conv()
+			{
+				cout<<"Enter Currency in Dollars:";
+				cin>>dol;
+				rs=54.3*dol;
+				cout<<""<<rs<<"	"<<"In INR\n";
+			}
+	};
+class euro:public rs
+	{
+		float er;
+		public:
+		void conv()
+			{
+				cout<<"Enter Currency in Euro:";
+				cin>>er;
+				rs=70.2*er;
+				cout<<""<<rs<<"	"<<"in INR\n";
+				disp();
+			}
+	};
+class pd:public rs
+	{
+		float pnd;
+		public:
+		void conv()
+			{
+				cout<<"Enter Currency in pound:";
+				cin>>pnd;
+				rs=81.1*pnd;
+				cout<<""<<rs<<"	"<<"in INR\n";
+				disp();
+			}
+	};
+int main()
+	{
+		int c;
+		dol d;
+		euro e;
+		pd p;
+		cout<<"\t\t\tCurrency conversion\n";
+		while(1)
+			{
+				cout<<"1.$ in Rs\n2.Euro in Rs\n3.Pound to Rs\n4.Exit\n";
+				cout<<"Enter your choice Maa!!!:";
+				cin>>c;
+				switch(c)
+					{
+						case 1:d.conv();
+							break;
+						case 2:e.conv();
+							break;
+						case 3:p.conv();
+							break;
+						default:
+							return 0;
+					}
+			}
+		return 0;
+	}

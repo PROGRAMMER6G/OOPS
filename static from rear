@@ -1,0 +1,115 @@
+#include<iostream>
+#include<new>
+using namespace std;
+
+struct nod
+{
+	int info;
+	struct nod*next;
+};
+
+typedef struct nod node;
+
+class list{
+
+	node *head;
+	
+	public:
+		
+		list()
+		{
+			head=NULL;
+		}
+		void ins(int info)
+		{
+			node *p = new node;
+			p->info=info;
+			p->next=NULL;
+			
+			if(head==NULL){
+        			head = p;
+        			return;
+        		}
+        		
+        		node *temp = head;
+        		while(temp->next!=NULL)
+        		{
+        			temp=temp->next;
+        		}
+        		temp->next=p;
+      		}
+		void del()
+		{
+			node *temp=head;
+			node *previous;
+			
+			if(head==NULL)
+				cout<<"\nNo elements to delete.\n";
+			
+			if(temp->next==NULL)
+			{
+				cout<<"\nValue deleted"<<head->info;
+				head=NULL;
+				return;
+			}
+			while(temp->next!=NULL)
+			{
+				previous = temp;
+				temp = temp->next;
+			}
+			
+			previous->next = NULL;
+
+ 			cout << "\nValue Deleted: " << temp->info;
+  
+  			free (temp);
+			
+			
+		}
+		void disp()
+		{
+			node *nex = new node;
+			nex = head;
+			cout<<"\n";
+			while(nex!=NULL)
+			{
+				cout<<nex->info<<" ";
+				nex = nex->next;
+			}
+			cout<<endl;
+		}
+};
+
+int main()
+{
+	int num, ch=1;
+	list ob;
+	cout<<"\n!!!!!!! LINEAR LINK LIST !!!!!!!\n";
+	cout<<"\n1]Insert\n2]Delete\n3]Exit";
+	while(ch)
+	{
+		cout<<"\nEnter your choice";
+		cin>>ch;
+		switch(ch)
+		{
+			case 1:
+				cout<<"\n Enter no. to be inserted\n";
+				cin>>num;
+				ob.ins(num);
+				ob.disp();
+				break;
+				
+			case 2:
+				ob.del();
+				ob.disp();
+				break;
+				
+			case 3:
+				return 0;
+				
+			default:
+				cout<<"Invalid choice\n";
+				break;
+		}
+	}
+}
